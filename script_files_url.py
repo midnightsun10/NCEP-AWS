@@ -21,5 +21,9 @@ for ens in ["01"]: #,"02", "03", "04"
                     f.write(base_line.format(ACTUAL_DATE = actual_date, INIT = hour, ENS = ens, INIT_FORE = init_hour[hour],
                                              DATE_FORECAST = ''.join(str(date_forecast[t+1])[:10].split("-")) if hour == "18" else ''.join(str(date_forecast[t])[:10].split("-")) )+ "\n")
                 else:
-                    f.write(base_line.format(ACTUAL_DATE = actual_date, INIT = hour, ENS = ens, INIT_FORE = hour,
-                             DATE_FORECAST = ''.join(str(date_forecast[t+1])[:10].split("-")) if hour == "18" else ''.join(str(date_forecast[t])[:10].split("-")) )+ "\n")
+                    if hour == "18":
+                        f.write(base_line.format(ACTUAL_DATE = actual_date, INIT = hour, ENS = ens, INIT_FORE = hour,
+                                 DATE_FORECAST = ''.join(str(date_forecast[t])[:10].split("-")) if hour == "18" else ''.join(str(date_forecast[t])[:10].split("-")) )+ "\n")
+                    else:
+                        f.write(base_line.format(ACTUAL_DATE = actual_date, INIT = hour, ENS = ens, INIT_FORE = hour,
+                                 DATE_FORECAST = ''.join(str(date_forecast[t+1])[:10].split("-")) if hour == "18" else ''.join(str(date_forecast[t])[:10].split("-")) )+ "\n")
